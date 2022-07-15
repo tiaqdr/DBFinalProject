@@ -37,13 +37,13 @@ session_start();
           <a class="nav-link" href="display_all.php">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href="./user_area/user-registration.php">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>1</sup></a>
+          <a class="nav-link" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>1</sup></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Total Price: <?php total_cart_price();?>$</a>
@@ -123,18 +123,16 @@ $run_products = mysqli_query($con,$get_products);
 while($row_products = mysqli_fetch_array($run_products)) {
 $pro_id = $row_products['product_id'];
 $pro_title = $row_products['product_title'];
-$pro_price = $row_products['product_price'];
 $pro_img1 = $row_products['product_image1'];
-$product_price = "$pro_price$";
 echo "<div class='col-md-3 col-sm-6 center-responsive mt-5' >
       <div class='product' >
-      <img src='admin_area/product_images/$pro_img1' class='img-responsive' >
+      <img src='admin_area/product_images/$pro_img1' class='img-responsive card-img-top' >
       </a>
       <div class='text' >
       <hr>
 
-      <h3><a href='' >$pro_title</a></h3>
-      <p class='buttons' ><a href='' class='btn btn-default' >View Details</a></p>
+      <h3><a href='index.php?product_id=$pro_id' >$pro_title</a></h3>
+      <p class='buttons' ><a href='index.php?product_id=$pro_id' class='btn btn-default' >View Details</a></p>
       </div>
       </div>
       </div>";
